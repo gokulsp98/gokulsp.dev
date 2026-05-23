@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#E8E4DE">
+    <title>Gokul S P | Resume</title>
+    <meta name="description" content="Gokul S P — Software Engineer. Full resume at a glance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #E8E4DE;
+            --bg-side: #E2DED7;
+            --bg-tag: #D8D4CC;
+            --border: #CCC8C0;
+            --text: #2C2C2C;
+            --text-sec: #4A4A4A;
+            --text-muted: #6E6E6E;
+            --font: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        html { -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.05s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .page {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 16.875rem 1fr;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        /* ── Header ── */
+        .header {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 1.375rem 2.25rem 0.875rem;
+            border-bottom: 0.125rem solid var(--text);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .header-title {
+            font-size: 0.8rem;
+            color: var(--text-sec);
+            font-weight: 400;
+            margin-top: 0.1875rem;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.125rem;
+            font-size: 0.7rem;
+        }
+
+        .header-links a, .header-links span { color: var(--text-sec); text-decoration: none; }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            background: var(--bg-side);
+            padding: 1rem 1.375rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            overflow: hidden;
+        }
+
+        /* ── Main ── */
+        .main {
+            padding: 1.125rem 2rem 1.125rem 1.625rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ── Section title ── */
+        .s-title {
+            font-size: 0.58rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        /* ── About ── */
+        .about {
+            font-size: 0.72rem;
+            color: var(--text-sec);
+            line-height: 1.5;
+        }
+
+        .about strong { color: var(--text); font-weight: 600; }
+
+        /* ── Skills ── */
+        .skill-group { margin-bottom: 0.35rem; }
+        .skill-group:last-child { margin-bottom: 0; }
+
+        .skill-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.1875rem; }
+
+        .skill-tags span {
+            font-size: 0.58rem;
+            font-weight: 500;
+            padding: 0.125rem 0.4375rem;
+            background: var(--bg-tag);
+            border-radius: 0.1875rem;
+            color: var(--text-sec);
+        }
+
+        /* ── Highlights ── */
+        .highlight-item {
+            font-size: 0.64rem;
+            color: var(--text-sec);
+            line-height: 1.45;
+            padding-left: 0.625rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-item:last-child { margin-bottom: 0; }
+
+        .highlight-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            width: 0.25rem;
+            height: 0.25rem;
+            border-radius: 50%;
+            background: var(--text-muted);
+        }
+
+        .highlight-item strong { color: var(--text); font-weight: 600; }
+
+        /* ── Education ── */
+        .edu-degree { font-size: 0.72rem; font-weight: 600; }
+        .edu-school { font-size: 0.66rem; color: var(--text-sec); margin-top: 0.125rem; line-height: 1.4; }
+        .edu-date { font-size: 0.62rem; color: var(--text-muted); margin-top: 0.125rem; }
+
+        /* ── Experience ── */
+        .exp-item { margin-bottom: 0.625rem; }
+        .exp-item:last-child { margin-bottom: 0; }
+
+        .exp-top { display: flex; justify-content: space-between; align-items: baseline; }
+        .exp-role { font-size: 0.76rem; font-weight: 600; }
+        .exp-date { font-size: 0.62rem; color: var(--text-muted); white-space: nowrap; font-weight: 500; }
+        .exp-company { font-size: 0.66rem; color: var(--text-sec); margin-top: 0.0625rem; margin-bottom: 0.1875rem; }
+
+        .exp-list { list-style: none; }
+
+        .exp-list li {
+            font-size: 0.66rem;
+            color: var(--text-sec);
+            line-height: 1.4;
+            padding-left: 0.625rem;
+            position: relative;
+            margin-bottom: 0.0938rem;
+        }
+
+        .exp-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.375rem;
+            width: 0.2188rem;
+            height: 0.2188rem;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .exp-list li strong { color: var(--text); font-weight: 600; }
+
+        .exp-tags { display: flex; flex-wrap: wrap; gap: 0.1875rem; margin-top: 0.25rem; }
+
+        .exp-tags span {
+            font-size: 0.54rem;
+            font-weight: 500;
+            padding: 0.0625rem 0.375rem;
+            background: var(--bg-side);
+            border-radius: 0.1875rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Awards & Writing row ── */
+        .bottom-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: auto;
+            padding-top: 0.625rem;
+            border-top: 0.0625rem solid var(--border);
+        }
+
+        .bottom-section { flex: 1; }
+
+        .bottom-section + .bottom-section {
+            border-left: 0.0625rem solid var(--border);
+            padding-left: 1.5rem;
+        }
+
+        .award-row { margin-bottom: 0.3125rem; }
+        .award-row:last-child { margin-bottom: 0; }
+        .award-name { font-size: 0.7rem; font-weight: 600; }
+        .award-meta { font-size: 0.6rem; color: var(--text-muted); }
+        .award-desc { font-size: 0.62rem; color: var(--text-sec); line-height: 1.4; margin-top: 0.0625rem; }
+
+        .writing-name { font-size: 0.7rem; font-weight: 600; }
+        .writing-desc { font-size: 0.62rem; color: var(--text-sec); line-height: 1.4; margin-top: 0.125rem; }
+        .writing-url { font-size: 0.6rem; color: var(--text-muted); text-decoration: none; margin-top: 0.125rem; display: inline-block; }
+
+        /* ── Footer ── */
+        .foot {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            padding: 0.5rem 2.25rem;
+            border-top: 0.0625rem solid var(--border);
+        }
+
+        .foot a { color: var(--text-sec); text-decoration: none; }
+
+        /* ── Print ── */
+        @media print {
+            body { background: #fff; overflow: visible; height: auto; }
+            .sidebar { background: #f5f5f5; }
+            .foot { display: none; }
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 48em) {
+            body { height: auto; overflow: auto; }
+            .page { display: flex; flex-direction: column; min-height: 100vh; }
+            .header { padding: 1.25rem 1.25rem 0.875rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+            .header-links { flex-wrap: wrap; gap: 0.625rem; }
+            .sidebar { padding: 1.125rem 1.25rem; border-bottom: 0.125rem solid var(--text-muted); }
+            .main { padding: 1.125rem 1.25rem; }
+            .bottom-row { flex-direction: column; gap: 0.875rem; }
+            .bottom-section + .bottom-section { border-left: none; padding-left: 0; border-top: 0.0625rem solid var(--border); padding-top: 0.875rem; }
+            .sidebar > div { padding-bottom: 1rem; border-bottom: 0.0625rem solid var(--border); }
+            .sidebar > div:last-child { border-bottom: none; padding-bottom: 0; }
+            .main > div:first-child { padding-bottom: 1rem; border-bottom: 0.0625rem solid var(--border); }
+            .foot { padding: 0.75rem 1.25rem; }
+            .exp-top { flex-direction: column; gap: 0.0625rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page" id="resume"></div>
+    <script src="data.js"></script>
+    <script>
+        const d = PORTFOLIO;
+        const w = d.writing;
+
+        const skillsHtml = d.skills.map(cat =>
+            `<div class="skill-group">
+                <div class="skill-label">${cat.title}</div>
+                <div class="skill-tags">${cat.tags.map(t => `<span>${t.name}</span>`).join('')}</div>
+            </div>`
+        ).join('');
+
+        const awardsHtml = d.awards.map(a =>
+            `<div class="award-row">
+                <span class="award-name">${a.title}</span>
+                <span class="award-meta"> — ${a.event}</span>
+                <div class="award-desc">${a.description}</div>
+            </div>`
+        ).join('');
+
+        const expHtml = d.experience.map(exp => {
+            const points = exp.projects.map(proj =>
+                proj.points.map(p => `<li>${p}</li>`).join('')
+            ).join('');
+
+            return `<div class="exp-item">
+                <div class="exp-top">
+                    <span class="exp-role">${exp.role}</span>
+                    <span class="exp-date">${exp.date}</span>
+                </div>
+                <div class="exp-company">${exp.company}</div>
+                <ul class="exp-list">${points}</ul>
+                <div class="exp-tags">${exp.tags.map(t => `<span>${t}</span>`).join('')}</div>
+            </div>`;
+        }).join('');
+
+        document.getElementById('resume').innerHTML = `
+            <header class="header">
+                <div class="header-left">
+                    <h1>${d.name}</h1>
+                    <div class="header-title">${d.title}</div>
+                </div>
+                <div class="header-links">
+                    <span>${d.location}</span>
+                    <a href="mailto:${d.email}">${d.email}</a>
+                    <a href="${d.linkedin}" target="_blank">${d.linkedinDisplay}</a>
+                    ${w ? `<a href="${w.blog.url}" target="_blank">${w.blog.name}</a>` : ''}
+                </div>
+            </header>
+
+            <aside class="sidebar">
+                <div>
+                    <div class="s-title">About</div>
+                    <div class="about">
+                        <strong>Software Engineer at ACV</strong> building marketplace features that drive revenue. Previously built analytics and data pipeline systems from scratch at Kissflow. Polyglot developer — Python, Java, C#, Vue.js.
+                    </div>
+                </div>
+                <div>
+                    <div class="s-title">Skills</div>
+                    ${skillsHtml}
+                </div>
+                <div>
+                    <div class="s-title">Education</div>
+                    <div class="edu-degree">${d.education.degree}</div>
+                    <div class="edu-school">${d.education.school}</div>
+                    <div class="edu-date">${d.education.date}</div>
+                </div>
+                <div>
+                    <div class="s-title">Highlights</div>
+                    <div class="highlight-item">Built an entire <strong>analytics system from zero</strong> — reporting, charts, pipeline</div>
+                    <div class="highlight-item"><strong>20+ technologies</strong> across Python, Java, C#, Spark, Snowflake</div>
+                    <div class="highlight-item">Author of <strong>Unbox the Black Box</strong> — tech blog for developers</div>
+                </div>
+            </aside>
+
+            <main class="main">
+                <div>
+                    <div class="s-title">Experience</div>
+                    ${expHtml}
+                </div>
+
+                <div class="bottom-row">
+                    <div class="bottom-section">
+                        <div class="s-title">Awards</div>
+                        ${awardsHtml}
+                    </div>
+                    ${w ? `<div class="bottom-section">
+                        <div class="s-title">Writing</div>
+                        <div class="writing-name">${w.blog.name}</div>
+                        <div class="writing-desc">${w.blog.description}</div>
+                        <a href="${w.blog.url}" target="_blank" class="writing-url">${w.blog.url.replace('https://', '')}</a>
+                    </div>` : ''}
+                </div>
+            </main>
+
+            <footer class="foot">
+                <a href="index.html">&larr; Back to Portfolio</a>
+                <span>${d.name} &mdash; ${new Date().getFullYear()}</span>
+            </footer>
+        `;
+
+        document.querySelectorAll('a[href="index.html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.style.transition = 'opacity 0.4s ease';
+                document.body.style.opacity = '0';
+                setTimeout(() => { window.location.href = link.href; }, 400);
+            });
+        });
+    </script>
+</body>
+</html>
