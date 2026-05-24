@@ -346,6 +346,13 @@ function renderFooter() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            document.body.classList.remove('page-exit');
+            document.body.style.opacity = '';
+        }
+    });
+
     renderPortfolio();
 
     const loader = document.getElementById('loader');

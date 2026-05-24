@@ -31,6 +31,23 @@ If a parent element (like `.nav`) has `backdrop-filter`, `filter`, `transform`, 
 1. Move the overlay element OUTSIDE the parent in the HTML (preferred — no CSS hacks needed)
 2. Remove `backdrop-filter` from the parent when the overlay is active (fragile — depends on `:has()` support and specificity)
 
+**CRITICAL BUG PATTERN — Back-forward cache (bfcache) blank page:**
+When a page has a fade-out exit animation (e.g., `body.page-exit { opacity: 0 }` or inline `style.opacity = '0'`), the browser may cache the page in its exit state. When the user swipes back (mobile gesture or browser back), the page is restored from bfcache with opacity still at 0 — blank screen.
+
+**How to detect:** Navigate away from a page, then use browser back (or mobile swipe-back gesture). If the page is blank/invisible, this is a bfcache issue.
+
+**How to fix:** Listen for `pageshow` event and reset the page state when `event.persisted` is true:
+```javascript
+window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+        document.body.classList.remove('page-exit');
+        document.body.style.opacity = '';
+        document.body.style.transition = '';
+    }
+});
+```
+This must be added to EVERY page that has exit animations.
+
 ### Scroll & Position
 - Elements with `position: fixed` or `position: sticky` — do they work at all scroll positions?
 - Scroll-triggered animations — do they fire correctly when scrolling up AND down?
