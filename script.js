@@ -372,15 +372,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function openMenu() {
         document.body.appendChild(navLinks);
         navToggle.classList.add('active');
-        navLinks.classList.add('active');
         document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                navLinks.classList.add('active');
+            });
+        });
     }
 
     function closeMenu() {
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
         document.body.style.overflow = '';
-        nav.insertBefore(navLinks, navToggle);
+        navLinks.addEventListener('transitionend', function handler() {
+            navLinks.removeEventListener('transitionend', handler);
+            if (!navLinks.classList.contains('active')) {
+                nav.insertBefore(navLinks, navToggle);
+            }
+        });
     }
 
     navToggle.addEventListener('click', () => {
