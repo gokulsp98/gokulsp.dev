@@ -350,17 +350,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.persisted) {
             document.body.classList.remove('page-exit');
             document.body.style.opacity = '';
+            loader.classList.add('hidden');
         }
     });
 
     renderPortfolio();
 
     const loader = document.getElementById('loader');
-    setTimeout(() => {
+    const fromResume = document.referrer.includes('resume');
+
+    if (fromResume) {
+        document.body.style.opacity = '0';
         loader.classList.add('hidden');
         document.body.style.overflow = '';
         initAnimations();
-    }, 800);
+        requestAnimationFrame(() => {
+            document.body.style.transition = 'opacity 0.6s ease';
+            document.body.style.opacity = '1';
+        });
+    } else {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            document.body.style.overflow = '';
+            initAnimations();
+        }, 800);
+    }
 
     // --- Navigation ---
     const nav = document.getElementById('nav');
