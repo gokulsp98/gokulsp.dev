@@ -100,6 +100,10 @@ function renderAbout() {
                 </div>
                 <div class="about-details">
                     <div class="about-detail">
+                        <span class="about-detail-label">Currently</span>
+                        <span class="about-detail-value">${d.title} at ${d.experience[0].company}</span>
+                    </div>
+                    <div class="about-detail">
                         <span class="about-detail-label">Based in</span>
                         <span class="about-detail-value">${d.location}</span>
                     </div>
@@ -107,16 +111,6 @@ function renderAbout() {
                         <span class="about-detail-label">Email</span>
                         <a href="mailto:${d.email}" class="about-detail-value">${d.email}</a>
                     </div>
-                </div>
-                <div class="about-cta">
-                    <a href="${d.linkedin}" target="_blank" rel="noopener" class="btn btn-primary">
-                        ${ICONS.linkedin(18)}
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="mailto:${d.email}" class="btn btn-ghost">
-                        ${ICONS.email(18)}
-                        <span>Email Me</span>
-                    </a>
                 </div>
             </div>
             <div class="about-right reveal-up" style="--delay: 0.15s">
@@ -311,54 +305,18 @@ function renderContact() {
 
     document.getElementById('contactContent').innerHTML = `
         <div class="section-header">
-
             <h2 class="section-title reveal-up">${c.heading} <span class="accent">${c.headingAccent}</span></h2>
             <p class="section-subtitle reveal-up">${c.subtitle}</p>
         </div>
-        <div class="contact-grid">
-            <div class="contact-info reveal-up">
-                <div class="contact-card">
-                    <div class="contact-card-icon">${ICONS.email()}</div>
-                    <div>
-                        <span class="contact-card-label">Email</span>
-                        <a href="mailto:${d.email}" class="contact-card-value">${d.email}</a>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">${ICONS.linkedin()}</div>
-                    <div>
-                        <span class="contact-card-label">LinkedIn</span>
-                        <a href="${d.linkedin}" target="_blank" rel="noopener" class="contact-card-value">${d.linkedinDisplay}</a>
-                    </div>
-                </div>
-            </div>
-            <form class="contact-form reveal-up" id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" required placeholder=" ">
-                    <label for="name">Your Name</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" required placeholder=" ">
-                    <label for="email">Your Email</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="subject" name="subject" placeholder=" ">
-                    <label for="subject">Subject</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
-                    <label for="message">Your Message</label>
-                    <div class="form-line"></div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">
-                    <span>Send Message</span>
-                    ${ICONS.send()}
-                </button>
-                <div class="form-status" id="formStatus"></div>
-            </form>
+        <div class="contact-cta reveal-up">
+            <a href="mailto:${d.email}" class="btn btn-primary">
+                ${ICONS.email(20)}
+                <span>Email Me</span>
+            </a>
+            <a href="${d.linkedin}" target="_blank" rel="noopener" class="btn btn-ghost">
+                ${ICONS.linkedin(20)}
+                <span>LinkedIn</span>
+            </a>
         </div>
     `;
 }
@@ -370,12 +328,12 @@ function renderFooter() {
         <div class="container">
             <div class="footer-content">
                 <span class="footer-logo">${d.name}<span class="accent">.</span></span>
-                <p class="footer-text">Built with ❤️ by Gokul — engineer, writer, builder.</p>
+                <p class="footer-text">writer, builder, engineer at heart.</p>
                 <div class="footer-links">
-                    <a href="mailto:${d.email}" aria-label="Email">${ICONS.email(20)}</a>
-                    <a href="${d.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin(20)}</a>
-                    <a href="${d.writing.blog.url}" target="_blank" rel="noopener" aria-label="Blog">${ICONS.book(20)}</a>
-                    <a href="${d.writing.blog.github}" target="_blank" rel="noopener" aria-label="GitHub">${ICONS.github(20)}</a>
+                    <a href="mailto:${d.email}" aria-label="Email">${ICONS.email(16)}</a>
+                    <a href="${d.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin(16)}</a>
+                    <a href="${d.writing.blog.url}" target="_blank" rel="noopener" aria-label="Blog">${ICONS.book(16)}</a>
+                    <a href="${d.writing.blog.github}" target="_blank" rel="noopener" aria-label="GitHub">${ICONS.github(16)}</a>
                 </div>
             </div>
         </div>
@@ -411,17 +369,31 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActiveLink();
     });
 
+    function openMenu() {
+        document.body.appendChild(navLinks);
+        navToggle.classList.add('active');
+        navLinks.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+        nav.insertBefore(navLinks, navToggle);
+    }
+
     navToggle.addEventListener('click', () => {
-        const isActive = navToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.style.overflow = isActive ? 'hidden' : '';
+        if (navToggle.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
 
     navLinkEls.forEach(link => {
         link.addEventListener('click', (e) => {
-            navToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMenu();
 
             const href = link.getAttribute('href');
             if (href && !href.startsWith('#')) {
@@ -434,9 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            navToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMenu();
         }
     });
 
@@ -517,52 +487,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(anchor.getAttribute('href'));
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-    });
-
-    // --- Contact Form ---
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData.entries());
-        if (!data.name || !data.email || !data.message) {
-            formStatus.textContent = 'Please fill in all required fields.';
-            formStatus.className = 'form-status error';
-            return;
-        }
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span>Sending...</span>';
-        submitBtn.disabled = true;
-        try {
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    access_key: PORTFOLIO.contact.formAccessKey,
-                    name: data.name, email: data.email,
-                    subject: data.subject || 'Portfolio Contact',
-                    message: data.message, from_name: 'Portfolio Contact Form',
-                })
-            });
-            const result = await response.json();
-            if (result.success) {
-                formStatus.textContent = "Message sent successfully! I'll get back to you soon.";
-                formStatus.className = 'form-status success';
-                contactForm.reset();
-            } else throw new Error('Submission failed');
-        } catch (err) {
-            const subject = encodeURIComponent(data.subject || 'Portfolio Contact');
-            const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`);
-            window.location.href = `mailto:${PORTFOLIO.email}?subject=${subject}&body=${body}`;
-            formStatus.textContent = 'Opening your email client...';
-            formStatus.className = 'form-status success';
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
     });
 
     // --- Philosophy Swiper ---

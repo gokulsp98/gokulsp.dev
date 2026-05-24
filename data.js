@@ -17,7 +17,7 @@ const PORTFOLIO = {
     // --- Hero Section ---
     hero: {
         greeting: "Hello, I'm",
-        description: 'I build <strong>marketplace features that drive revenue</strong> at ACV and previously built an <strong>analytics system from scratch</strong> at Kissflow. I pick the right language for the job — Python, Java, C#, or whatever the problem demands.',
+        description: 'I build <strong>marketplace features that drive revenue</strong> at ACV and previously built an <strong>analytics system from scratch</strong> at Kissflow. I pick the right tool for the job — my approach is driven by the problem, not the stack.',
         typingPhrases: [
             'Full-Stack Engineer',
             'Data Pipeline Architect',
@@ -34,8 +34,8 @@ const PORTFOLIO = {
     // --- About Section ---
     about: {
         paragraphs: [
-            `I'm a <strong>Software Engineer</strong> at <strong>ACV</strong>, working on the <em>Marketplace</em> product — building features around <em>offers and negotiations</em> that directly impact revenue. I work across Python, Java, C#, and Vue.js — choosing the right tool for each problem.`,
-            `Previously, I spent 4 years at <strong>Kissflow</strong> where I built their <em>analytics system and data pipeline from the ground up</em> — Spark jobs, Snowflake sync, the full stack. I also write in-depth <em>technical articles</em> breaking down how things work under the hood, and actively explore <em>AI-assisted development</em> workflows with Claude Code, MCP servers, and custom agents.`,
+            `I started at <strong>Kissflow</strong> as an associate engineer — fixing bugs, writing tests, learning the codebase. Within two years, I was the one they trusted to <em>design and build their entire analytics system from scratch</em>: the reporting module, the data pipeline, the Spark jobs, all of it. That experience shaped how I think about software — not just writing code, but owning a system end-to-end.`,
+            `Outside work, I run <em>Unbox the Black Box</em> — a tech blog where I break down complex concepts into clear explanations, because teaching is how I truly understand things. I'm also deep into <em>AI-assisted development</em>, building custom workflows and tools that help me ship faster and think clearer.`,
         ],
         yearsExperience: '5+ Years',
     },
@@ -106,8 +106,8 @@ const PORTFOLIO = {
     ],
 
     philosophyQuotes: [
-        'I believe in choosing the <strong>right tool for the job</strong>. Whether it\'s optimizing a data pipeline with Spark or shipping features in C# — my approach is driven by the problem, not the stack.',
-        'I\'m going <strong>language-agnostic</strong> by design. The best engineers aren\'t defined by one language — they\'re defined by how fast they can ship the right solution.',
+        'I\'d rather spend a week understanding the problem than write code that solves the wrong thing. The best systems I\'ve built started with <strong>a blank whiteboard</strong>, not a blank editor.',
+        'Writing isn\'t separate from engineering — it\'s part of it. If I can\'t <strong>explain it clearly</strong>, I probably don\'t understand it well enough to build it right.',
     ],
 
     // --- Experience Section ---
@@ -121,8 +121,7 @@ const PORTFOLIO = {
                     title: 'Marketplace - Offers & Negotiations',
                     points: [
                         'Building revenue-driving features on the <strong>Marketplace</strong> product — offers, negotiations, and buyer workflows',
-                        'Working across <strong>Python, Java, C#, and Vue.js</strong> in a polyglot microservices architecture',
-                        'Shipping faster with <strong>AI-assisted development</strong> — Claude Code, Copilot, and custom MCP integrations',
+                        'Collaborating across <strong>multiple microservices</strong> to deliver features spanning the full offer lifecycle',
                         'Owning end-to-end feature delivery from <strong>design review to production</strong>, reducing release cycle time across teams',
                     ],
                 },
