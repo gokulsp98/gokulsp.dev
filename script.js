@@ -328,7 +328,7 @@ function renderFooter() {
         <div class="container">
             <div class="footer-content">
                 <span class="footer-logo">${d.name}<span class="accent">.</span></span>
-                <p class="footer-text">writer, builder, engineer at heart.</p>
+                <p class="footer-text">writer, builder, engineer at ❤️.</p>
                 <div class="footer-links">
                     <a href="mailto:${d.email}" aria-label="Email">${ICONS.email(16)}</a>
                     <a href="${d.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin(16)}</a>

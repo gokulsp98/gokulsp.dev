@@ -17,7 +17,7 @@ const PORTFOLIO = {
     // --- Hero Section ---
     hero: {
         greeting: "Hello, I'm",
-        description: 'I build <strong>marketplace features that drive revenue</strong> at ACV and previously built an <strong>analytics system from scratch</strong> at Kissflow. I pick the right tool for the job — my approach is driven by the problem, not the stack.',
+        description: 'I build <strong>marketplace features that drive revenue</strong> at ACV and previously built an <strong>analytics system from scratch</strong> at Kissflow. I don\'t just write features — I design the systems behind them.',
         typingPhrases: [
             'Full-Stack Engineer',
             'Data Pipeline Architect',
